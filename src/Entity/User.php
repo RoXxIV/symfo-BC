@@ -51,7 +51,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=180, nullable=true)
+     * @ORM\Column(type="string", length=180)
      * @Groups("user:read")
      * @Groups("user:write")
      * @Groups("skateshop:read")
@@ -59,7 +59,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=50)
      * @Groups("user:read")
      * @Groups("user:write")
      * @Groups("skateshop:read")
@@ -67,21 +67,21 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=50)
      * @Groups("user:read")
      * @Groups("user:write")
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", length=14, nullable=true)
+     * @ORM\Column(type="string", length=14)
      * @Groups("user:read")
      * @Groups("user:write")
      */
     private $siretNumber;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=10)
      * @Groups("user:read")
      * @Groups("user:write")
      */

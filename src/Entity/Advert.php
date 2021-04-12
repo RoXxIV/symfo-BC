@@ -31,7 +31,7 @@ class Advert
      * @Groups("advert:read")
      * @Groups("advert:write")
      */
-    private $releasedAt;
+    private $released_at;
 
     /**
      * @ORM\Column(type="string", length=500)
@@ -110,12 +110,12 @@ class Advert
 
     public function getReleasedAt(): ?\DateTimeInterface
     {
-        return $this->releasedAt;
+        return $this->released_at;
     }
 
-    public function setReleasedAt(\DateTimeInterface $releasedAt): self
+    public function setReleasedAt(\DateTimeInterface $released_at): self
     {
-        $this->releasedAt = $releasedAt;
+        $this->released_at = $released_at;
 
         return $this;
     }
