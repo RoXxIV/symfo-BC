@@ -9,7 +9,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * normalizationContext={"groups"={"skateshop:read"}},
+ * denormalizationContext={"groups"={"skateshop:write"}}
+ * )
  * @ORM\Entity(repositoryClass=SkateshopRepository::class)
  */
 class Skateshop
@@ -18,37 +21,52 @@ class Skateshop
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("skateshop:read")
+     * @Groups("advert:write")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=120)
+     * @Groups("skateshop:read")
+     * @Groups("skateshop:write")
+     * @Groups("advert:read")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("skateshop:read")
+     * @Groups("skateshop:write")
      */
     private $street;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Groups("skateshop:read")
+     * @Groups("skateshop:write")
      */
     private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=70)
+     * @Groups("skateshop:read")
+     * @Groups("skateshop:write")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Groups("skateshop:read")
+     * @Groups("skateshop:write")
      */
     private $phone;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="skateshops")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("skateshop:read")
+     * @Groups("skateshop:write")
      */
     private $professional;
 

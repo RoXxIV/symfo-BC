@@ -9,7 +9,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * normalizationContext={"groups"={"model:read"}},
+ * denormalizationContext={"groups"={"model:write"}}
+ * )
  * @ORM\Entity(repositoryClass=ModelRepository::class)
  */
 class Model
@@ -18,17 +21,25 @@ class Model
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("model:read")
+     * @Groups("advert:write")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("model:read")
+     * @Groups("model:write")
+     * @Groups("advert:read")
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="models")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("model:read")
+     * @Groups("model:write")
+     * @Groups("advert:read")
      */
     private $brand;
 
