@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="`user`")
  * @ApiResource(
  * normalizationContext={"groups"={"user:read"}},
- * denormalizationContext={"groups"={"user:write"}}
+ * denormalizationContext={"groups"={"user:write"}},
  * )
  */
 class User implements UserInterface
@@ -47,6 +47,7 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Groups("user:write")
+     * @Groups("user:read")
      */
     private $password;
 
@@ -126,7 +127,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
