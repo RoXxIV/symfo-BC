@@ -68,6 +68,7 @@ class Skateshop
      * @ORM\JoinColumn(nullable=false)
      * @Groups("skateshop:read")
      * @Groups("skateshop:write")
+     * @Groups("advert:read")
      */
     private $professional;
 

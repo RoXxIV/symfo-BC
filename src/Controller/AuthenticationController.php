@@ -18,16 +18,21 @@ class AuthenticationController extends AbstractController
 
         $username = json_decode($request->getContent())->username;
         $password = json_decode($request->getContent())->password;
+        $email = json_decode($request->getContent())->email;
+        $lastName = json_decode($request->getContent())->lastName;
+        $firstName = json_decode($request->getContent())->firstName;
+        $siretNumber = json_decode($request->getContent())->siretNumber;
+        $phone = json_decode($request->getContent())->phone;
 
         $user = new User();
         $user->setUsername($username);
         $user->setPassword($encoder->encodePassword($user, $password));
         $user->setRoles(['ROLES_USER']);
-        $user->setEmail("jean.melon@gmail.com");
-        $user->setLastName("Melon");
-        $user->setFirstName("jean");
-        $user->setSiretNumber("12345678965874");
-        $user->setPhone("0680564853");
+        $user->setEmail($email);
+        $user->setLastName($lastName);
+        $user->setFirstName($firstName);
+        $user->setSiretNumber($siretNumber);
+        $user->setPhone($phone);
 
         $em->persist($user);
         $em->flush();

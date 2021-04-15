@@ -16,6 +16,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ApiResource(
  * normalizationContext={"groups"={"user:read"}},
  * denormalizationContext={"groups"={"user:write"}},
+ collectionOperations={
+            "get",
+ *          "post"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     },
  * )
  */
 class User implements UserInterface
@@ -26,6 +30,8 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * @Groups("user:read")
      * @Groups("skateshop:write")
+     * @Groups("skateshop:read")
+     * @Groups("advert:read")
      */
     private $id;
 
