@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  * attributes={"order"={"released_at":"DESC"}},
- * paginationItemsPerPage=12,
  * normalizationContext={"groups"={"advert:read"}},
  * denormalizationContext={"groups"={"advert:write"}},
  * 
